@@ -1,0 +1,17 @@
+Package: rprintf
+Type: Package
+Title: A set of functions to build formatted string
+Version: 0.1
+Author: Kun Ren <renkun@outlook.com>
+Maintainer: Kun Ren <renkun@outlook.com>
+Description: A set of functions to build formatted string.
+Depends:
+    R (>= 2.15)
+Date: 2014-06-02
+Suggests:
+    stringr
+License: MIT + file LICENSE
+URL: http://renkun.me/rprintf,
+    https://github.com/renkun-ken/rprintf
+BugReports: https://github.com/renkun-ken/rprintf/issues
+Roxygen: list(wrap = FALSE)
