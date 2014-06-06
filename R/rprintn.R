@@ -28,5 +28,6 @@ rprintn <- function(x,...) {
   xss <- as.numeric(stringr::str_replace_all(xs,stringr::perl("(?<!\\{)\\{(\\d+)(:[\\s\\+\\-\\#\\.\\d]*\\w)?\\}(?!\\})"),"\\1"))
   pass1 <- stringr::str_replace_all(x,stringr::perl("(?<!\\{)\\{(\\d+):([\\s\\+\\-\\#\\.\\d]*\\w)?\\}(?!\\})"),"%\\2")
   pass2 <- stringr::str_replace_all(pass1,stringr::perl("(?<!\\{)\\{(\\d+)\\}(?!\\})"),"%s")
-  do.call(sprintf,c(list(pass2),args[xss]))
+  pass3 <- do.call(sprintf,c(list(pass2),args[xss]))
+  stringr::str_replace_all(pass3,"\\{\\{(.+)\\}\\}","{\\1}")
 }
