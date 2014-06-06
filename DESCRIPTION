@@ -1,7 +1,6 @@
 Package: rprintf
 Type: Package
-Title: A set of tools for building formatted string under various replacement
-    rules
+Title: Formatted string builder
 Version: 0.1
 Author: Kun Ren <renkun@outlook.com>
 Maintainer: Kun Ren <renkun@outlook.com>
