@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rprintf by renkun-ken</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">rprintf</h1>
+        <p class="header">Adaptive builder for formatted strings</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/renkun-ken/rprintf/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/renkun-ken/rprintf/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/renkun-ken/rprintf">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/renkun-ken">renkun-ken</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="rprintf" class="anchor" href="#rprintf"><span class="octicon octicon-link"></span></a>rprintf</h1>
+
+<p><a href="https://travis-ci.org/renkun-ken/rprintf"><img src="https://travis-ci.org/renkun-ken/rprintf.png?branch=master" alt="Build Status"></a></p>
+
+<p>rprintf is an adaptive builder for formatted strings. Currently it provides a set of tools for building formatted strings under various replacement rules: </p>
+
+<ul>
+<li>C-style formatting with <code>sprintf</code>
+</li>
+<li>Named variable-based formatting</li>
+<li>Number-based formatting</li>
+</ul><p>The primary goal of this package is to make it easier to produce formatted strings in all popular styles.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>You can install the latest development version from GitHub with</p>
+
+<pre><code>devtools::install_github("rprintf","renkun-ken")
+</code></pre>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>The following examples demonstrate how <code>rprintf</code> functions works. You should be familiar with how <code>sprintf</code> works first. See the <a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/sprintf.html">documentation</a> for more details.</p>
+
+<h3>
+<a name="c-style-formatting" class="anchor" href="#c-style-formatting"><span class="octicon octicon-link"></span></a>C-style formatting</h3>
+
+<pre><code>&gt; rprintf("Hello, %s","world")
+[1] "Hello, world"
+
+&gt; rprintf("%s (%d years old)","Ken",24)
+[1] "Ken (24 years old)"
+
+&gt; rprintf("He is %d but has a height of %.1fcm",18,190)
+[1] "He is 18 but has a height of 190.0cm"
+</code></pre>
+
+<h3>
+<a name="named-variable-based-formatting" class="anchor" href="#named-variable-based-formatting"><span class="octicon octicon-link"></span></a>Named variable-based formatting</h3>
+
+<pre><code>&gt; rprintf("Hello, $name", name="world")
+[1] "Hello, world"
+
+&gt; rprintf("$name ($age years old)",name="Ken",age=24)
+[1] "Ken (24 years old)"
+
+&gt; rprintf("He is $age but has a height of $height:.2fcm",age=18,height=190)
+[1] "He is 18 but has a height of 190.00cm"
+
+&gt; rprintf("$a, $b:.1f, $c:+.2f, $b, $a:.0f",a=1.56,b=2.34,c=3.78)
+[1] "1.56, 2.3, +3.78, 2.34, 2"
+</code></pre>
+
+<h3>
+<a name="number-based-formatting" class="anchor" href="#number-based-formatting"><span class="octicon octicon-link"></span></a>Number-based formatting</h3>
+
+<pre><code>&gt; rprintf("Hello, {1}", "world")
+[1] "Hello, world"
+
+&gt; rprintf("{1} ({2} years old)","Ken",24)
+[1] "Ken (24 years old)"
+
+&gt; rprintf("He is {1} but has a height of {2:.2f}cm",18,190)
+[1] "He is 18 but has a height of 190.00cm"
+
+&gt; rprintf("{1}, {2:.1f}, {3:+.2f}, {2}, {1:.0f}",1.56,2.34,3.78)
+[1] "1.56, 2.3, +3.78, 2.34, 2"
+
+&gt; rprintf("{2},{1}","x","y")
+[1] "y,x"
+</code></pre>
+
+<h3>
+<a name="working-with-named-character-vectors-and-lists" class="anchor" href="#working-with-named-character-vectors-and-lists"><span class="octicon octicon-link"></span></a>Working with named character vectors and lists</h3>
+
+<pre><code>&gt; rprintf(c("%s:%d","$name:$age","{1}:{2}"),name="Ken",age=24)
+[1] "Ken:24" "Ken:24" "Ken:24"
+
+&gt; rprintf(c(a="%s:%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
+       a        b        c 
+"Ken:24" "Ken:24" "Ken:24"
+
+&gt; rprintf(list("%s:%d","$name:$age","{1}:{2}"),name="Ken",age=24)
+[[1]]
+[1] "Ken:24"
+
+[[2]]
+[1] "Ken:24"
+
+[[3]]
+[1] "Ken:24"
+
+&gt; rprintf(list(a="%s:%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
+$a
+[1] "Ken:24"
+
+$b
+[1] "Ken:24"
+
+$c
+[1] "Ken:24"
+</code></pre>
+
+<p>For each type of formatting, a specialized function is also provided. <code>rprintv</code> only handles named variable-based formatting, and <code>rprintn</code> only handles number-based formatting.</p>
+
+<h2>
+<a name="help-overview" class="anchor" href="#help-overview"><span class="octicon octicon-link"></span></a>Help overview</h2>
+
+<pre><code>help(package = rprintf)
+</code></pre>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This package is under <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-47159422-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
