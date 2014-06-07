@@ -13,7 +13,13 @@ The primary goal of this package is to make it easier to produce formatted strin
 
 ## Installation
 
-You can install the latest development version from GitHub with
+You can install from CRAN with
+
+```
+install.packages("rprintf")
+```
+
+or you can install the latest development version from GitHub with
 
 ```
 devtools::install_github("rprintf","renkun-ken")
