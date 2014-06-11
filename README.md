@@ -15,13 +15,13 @@ The primary goal of this package is to make it easier to produce formatted strin
 
 You can install from CRAN with
 
-```
+```s
 install.packages("rprintf")
 ```
 
 or you can install the latest development version from GitHub with
 
-```
+```s
 devtools::install_github("rprintf","renkun-ken")
 ```
 
@@ -31,7 +31,7 @@ The following examples demonstrate how `rprintf` functions works. You should be 
 
 ### C-style formatting
 
-```
+```rconsole
 > rprintf("Hello, %s","world")
 [1] "Hello, world"
 
@@ -44,7 +44,7 @@ The following examples demonstrate how `rprintf` functions works. You should be 
 
 ### Named variable-based formatting
 
-```
+```rconsole
 > rprintf("Hello, $name", name="world")
 [1] "Hello, world"
 
@@ -60,7 +60,7 @@ The following examples demonstrate how `rprintf` functions works. You should be 
 
 ### Number-based formatting
 
-```
+```rconsole
 > rprintf("Hello, {1}", "world")
 [1] "Hello, world"
 
@@ -79,7 +79,7 @@ The following examples demonstrate how `rprintf` functions works. You should be 
 
 ### Working with named character vectors and lists
 
-```
+```rconsole
 > rprintf(c("%s:%d","$name:$age","{1}:{2}"),name="Ken",age=24)
 [1] "Ken:24" "Ken:24" "Ken:24"
 
@@ -112,7 +112,7 @@ For each type of formatting, a specialized function is also provided. `rprintv` 
 
 ## Help overview
 
-```
+```s
 help(package = rprintf)
 ```
 
