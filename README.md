@@ -15,13 +15,13 @@ The primary goal of this package is to make it easier to produce formatted strin
 
 You can install from CRAN with
 
-```s
+```r
 install.packages("rprintf")
 ```
 
 or you can install the latest development version from GitHub with
 
-```s
+```r
 devtools::install_github("rprintf","renkun-ken")
 ```
 
@@ -112,7 +112,7 @@ For each type of formatting, a specialized function is also provided. `rprintv` 
 
 ## Help overview
 
-```s
+```r
 help(package = rprintf)
 ```
 
