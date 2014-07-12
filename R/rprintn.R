@@ -22,7 +22,7 @@
 #' }
 #'
 rprintn <- function(x,...) {
-  args <- list(...)
+  args <- makelist(...)
   x <- stringr::str_replace_all(x,"%","%%")
   xs <- unlist(stringr::str_extract_all(x,stringr::perl("(?<!\\{)\\{\\d+(:[\\s\\+\\-\\#\\.\\d]*\\w)?\\}(?!\\})")))
   xss <- as.numeric(stringr::str_replace_all(xs,stringr::perl("(?<!\\{)\\{(\\d+)(:[\\s\\+\\-\\#\\.\\d]*\\w)?\\}(?!\\})"),"\\1"))

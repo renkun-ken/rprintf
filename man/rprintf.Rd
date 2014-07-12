@@ -3,18 +3,13 @@
 \alias{rprintf}
 \title{Build a character vector or list with adaptive string formatting}
 \usage{
-rprintf(x, ..., unlist = is.character(x), use.names = !is.null(names(x)))
+rprintf(x, ...)
 }
 \arguments{
 \item{x}{The character vector or list to be transformed}
 
 \item{...}{The arguments that specify the set of values to be
 placed}
-
-\item{unlist}{Whether to unlist the output}
-
-\item{use.names}{Whether to keep the names of the original
-character vector or list}
 }
 \description{
 The \code{rprintf} function checks the given character vector or
@@ -25,8 +20,7 @@ formats.
 }
 \examples{
 \dontrun{
-
-# Format a single-entry character vector with sprintf mechanism
+#' # Format a single-entry character vector with sprintf mechanism
 rprintf("Hello, \%s","world")
 rprintf("\%s (\%d years old)","Ken",24)
 rprintf("He is \%d but has a height of \%.1fcm",18,190)
@@ -49,6 +43,11 @@ rprintf(c("\%s:\%d","$name:$age","{1}:{2}"),name="Ken",age=24)
 rprintf(c(a="\%s:\%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
 rprintf(list("\%s:\%d","$name:$age","{1}:{2}"),name="Ken",age=24)
 rprintf(list(a="\%s:\%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
+
+# This function works with list argument for named variables.
+p <- list(name="Ken",age=24)
+rprintf("name: $name, age: $age",p)
+rprintf("name: {1}, age: {2}",p)
 }
 }
 

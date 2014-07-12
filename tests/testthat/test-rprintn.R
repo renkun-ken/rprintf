@@ -10,4 +10,7 @@ test_that("rprintn works as expected", {
   expect_equivalent(rprintn("{1},{2:s},{3:.2f},{2},{1}","a","b",1.4),"a,b,1.40,b,a")
   expect_equivalent(rprintn("{{1}}","a"),"{1}")
   expect_equivalent(rprintn("{{1:s}}","a"),"{1:s}")
+
+  p <- list(name="Ken",age=25)
+  expect_equivalent(rprintn("{1}, {2}",p),"Ken, 25")
 })

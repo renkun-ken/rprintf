@@ -9,14 +9,10 @@
 #' @param x The character vector or list to be transformed
 #' @param ... The arguments that specify the set of values to be
 #'   placed
-#' @param unlist Whether to unlist the output
-#' @param use.names Whether to keep the names of the original
-#'   character vector or list
 #' @export
 #' @examples
 #' \dontrun{
-#'
-#' # Format a single-entry character vector with sprintf mechanism
+#'#' # Format a single-entry character vector with sprintf mechanism
 #' rprintf("Hello, %s","world")
 #' rprintf("%s (%d years old)","Ken",24)
 #' rprintf("He is %d but has a height of %.1fcm",18,190)
@@ -39,22 +35,21 @@
 #' rprintf(c(a="%s:%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
 #' rprintf(list("%s:%d","$name:$age","{1}:{2}"),name="Ken",age=24)
 #' rprintf(list(a="%s:%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
-#' }
 #'
-rprintf <- function(x,...,
-  unlist=is.character(x),
-  use.names=!is.null(names(x))) {
+#' # This function works with list argument for named variables.
+#' p <- list(name="Ken",age=24)
+#' rprintf("name: $name, age: $age",p)
+#' rprintf("name: {1}, age: {2}",p)
+#' }
+rprintf <- function(x,...) {
   matches <- do.call(cbind,
     lapply(patterns,function(pattern) {
       grepl(pattern,x,perl = TRUE)
   }))
-  funs.id <- apply(matches,1,function(row) head(which(row),1))
+  funs.id <- apply(matches,1L,function(row) which(row)[1L])
   funs <- names(patterns)[funs.id]
-  result <- Map(rprintf.match,x,funs,...)
-  if(unlist) {
-    unlist(result,use.names = use.names)
-  } else {
-    if(!use.names) names(result) <- NULL
-    result
-  }
+  args <- list(...)
+  result <- Map(rprintf.match,x,funs,list(args))
+  if(is.list(x)) result
+  else unlist(result,use.names = FALSE)
 }
