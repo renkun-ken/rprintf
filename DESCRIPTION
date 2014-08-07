@@ -2,8 +2,8 @@ Package: rprintf
 Type: Package
 Title: Adaptive builder for formatted strings
 Version: 0.1-1
-Author: Kun Ren <ken@renkun.me>
-Maintainer: Kun Ren <ken@renkun.me>
+Author: Kun Ren <renkun@outlook.com>
+Maintainer: Kun Ren <renkun@outlook.com>
 Description: A set of tools for building formatted string under various
     replacement rules: C-style formatting, named variable-based formatting, and
     number-based formatting
@@ -21,4 +21,4 @@ URL: http://renkun.me/rprintf,
 BugReports: https://github.com/renkun-ken/rprintf/issues
 Roxygen: list(wrap = FALSE)
 ByteCompile: TRUE
-VignetteBuilder: knitr
+
