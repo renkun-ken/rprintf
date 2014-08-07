@@ -9,6 +9,7 @@ rprintf.match <- function(x,fun,args) {
 }
 
 makelist <- function(...) {
+  ## better use do.call(c,list(...))
   args <- list(...)
   if(any(vapply(args,is.list,logical(1L))))
     unlist(args,recursive = FALSE)
