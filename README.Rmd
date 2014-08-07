@@ -37,6 +37,7 @@ The following examples demonstrate how `rprintf` functions works. You should be 
 ### C-style formatting
 
 ```{r}
+library(rprintf)
 rprintf("Hello, %s","world")
 rprintf("%s (%d years old)","Ken",24)
 rprintf("He is %d but has a height of %.1fcm",18,190)
