@@ -1,35 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>rprintf by renkun-ken</title>
+    <meta name="description" content="rprintf : Adaptive builder for formatted strings">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>rprintf</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">rprintf</h1>
-        <p class="header">Adaptive builder for formatted strings</p>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/renkun-ken/rprintf/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/renkun-ken/rprintf/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/renkun-ken/rprintf">View On GitHub</a></li>
-        </ul>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/renkun-ken/rprintf">View on GitHub</a>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/renkun-ken">renkun-ken</a></p>
+          <h1 id="project_title">rprintf</h1>
+          <h2 id="project_tagline">Adaptive builder for formatted strings</h2>
 
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/renkun-ken/rprintf/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/renkun-ken/rprintf/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 
-      </header>
-      <section>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a name="rprintf" class="anchor" href="#rprintf"><span class="octicon octicon-link"></span></a>rprintf</h1>
 
@@ -49,12 +50,12 @@
 
 <p>You can install from CRAN with</p>
 
-<div class="highlight highlight-s"><pre>install.packages<span class="p">(</span><span class="s">"rprintf"</span><span class="p">)</span>
+<div class="highlight highlight-r"><pre>install.packages<span class="p">(</span><span class="s">"rprintf"</span><span class="p">)</span>
 </pre></div>
 
 <p>or you can install the latest development version from GitHub with</p>
 
-<div class="highlight highlight-s"><pre>devtools<span class="o">::</span>install_github<span class="p">(</span><span class="s">"rprintf"</span><span class="p">,</span><span class="s">"renkun-ken"</span><span class="p">)</span>
+<div class="highlight highlight-r"><pre>devtools<span class="o">::</span>install_github<span class="p">(</span><span class="s">"rprintf"</span><span class="p">,</span><span class="s">"renkun-ken"</span><span class="p">)</span>
 </pre></div>
 
 <h2>
@@ -65,88 +66,156 @@
 <h3>
 <a name="c-style-formatting" class="anchor" href="#c-style-formatting"><span class="octicon octicon-link"></span></a>C-style formatting</h3>
 
-<div class="highlight highlight-rconsole"><pre><span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"Hello, %s"</span><span class="p">,</span><span class="s">"world"</span><span class="p">)</span>
-<span class="go">[1] "Hello, world"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"%s (%d years old)"</span><span class="p">,</span><span class="s">"Ken"</span><span class="p">,</span><span class="m">24</span><span class="p">)</span>
-<span class="go">[1] "Ken (24 years old)"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"He is %d but has a height of %.1fcm"</span><span class="p">,</span><span class="m">18</span><span class="p">,</span><span class="m">190</span><span class="p">)</span>
-<span class="go">[1] "He is 18 but has a height of 190.0cm"</span>
+<div class="highlight highlight-r"><pre><span class="kn">library</span><span class="p">(</span>rprintf<span class="p">)</span>
+rprintf<span class="p">(</span><span class="s">"Hello, %s"</span><span class="p">,</span><span class="s">"world"</span><span class="p">)</span>
 </pre></div>
+
+<pre><code>[1] "Hello, world"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"%s (%d years old)"</span><span class="p">,</span><span class="s">"Ken"</span><span class="p">,</span><span class="m">24</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "Ken (24 years old)"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is %d but has a height of %.1fcm"</span><span class="p">,</span><span class="m">18</span><span class="p">,</span><span class="m">190</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "He is 18 but has a height of 190.0cm"
+</code></pre>
 
 <h3>
 <a name="named-variable-based-formatting" class="anchor" href="#named-variable-based-formatting"><span class="octicon octicon-link"></span></a>Named variable-based formatting</h3>
 
-<div class="highlight highlight-rconsole"><pre><span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"Hello, $name"</span><span class="p">,</span> name<span class="o">=</span><span class="s">"world"</span><span class="p">)</span>
-<span class="go">[1] "Hello, world"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"$name ($age years old)"</span><span class="p">,</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
-<span class="go">[1] "Ken (24 years old)"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"He is $age but has a height of $height:.2fcm"</span><span class="p">,</span>age<span class="o">=</span><span class="m">18</span><span class="p">,</span>height<span class="o">=</span><span class="m">190</span><span class="p">)</span>
-<span class="go">[1] "He is 18 but has a height of 190.00cm"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"$a, $b:.1f, $c:+.2f, $b, $a:.0f"</span><span class="p">,</span>a<span class="o">=</span><span class="m">1.56</span><span class="p">,</span>b<span class="o">=</span><span class="m">2.34</span><span class="p">,</span>c<span class="o">=</span><span class="m">3.78</span><span class="p">)</span>
-<span class="go">[1] "1.56, 2.3, +3.78, 2.34, 2"</span>
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Hello, $name"</span><span class="p">,</span> name<span class="o">=</span><span class="s">"world"</span><span class="p">)</span>
 </pre></div>
+
+<pre><code>[1] "Hello, world"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"$name ($age years old)"</span><span class="p">,</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "Ken (24 years old)"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is $age but has a height of $height:.2fcm"</span><span class="p">,</span>age<span class="o">=</span><span class="m">18</span><span class="p">,</span>height<span class="o">=</span><span class="m">190</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "He is 18 but has a height of 190.00cm"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"$a, $b:.1f, $c:+.2f, $b, $a:.0f"</span><span class="p">,</span>a<span class="o">=</span><span class="m">1.56</span><span class="p">,</span>b<span class="o">=</span><span class="m">2.34</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="m">3.78</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "1.56, 2.3, +3.78, 2.34, 2"
+</code></pre>
 
 <h3>
 <a name="number-based-formatting" class="anchor" href="#number-based-formatting"><span class="octicon octicon-link"></span></a>Number-based formatting</h3>
 
-<div class="highlight highlight-rconsole"><pre><span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"Hello, {1}"</span><span class="p">,</span> <span class="s">"world"</span><span class="p">)</span>
-<span class="go">[1] "Hello, world"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"{1} ({2} years old)"</span><span class="p">,</span><span class="s">"Ken"</span><span class="p">,</span><span class="m">24</span><span class="p">)</span>
-<span class="go">[1] "Ken (24 years old)"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"He is {1} but has a height of {2:.2f}cm"</span><span class="p">,</span><span class="m">18</span><span class="p">,</span><span class="m">190</span><span class="p">)</span>
-<span class="go">[1] "He is 18 but has a height of 190.00cm"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"{1}, {2:.1f}, {3:+.2f}, {2}, {1:.0f}"</span><span class="p">,</span><span class="m">1.56</span><span class="p">,</span><span class="m">2.34</span><span class="p">,</span><span class="m">3.78</span><span class="p">)</span>
-<span class="go">[1] "1.56, 2.3, +3.78, 2.34, 2"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span><span class="s">"{2},{1}"</span><span class="p">,</span><span class="s">"x"</span><span class="p">,</span><span class="s">"y"</span><span class="p">)</span>
-<span class="go">[1] "y,x"</span>
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Hello, {1}"</span><span class="p">,</span> <span class="s">"world"</span><span class="p">)</span>
 </pre></div>
+
+<pre><code>[1] "Hello, world"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"{1} ({2} years old)"</span><span class="p">,</span><span class="s">"Ken"</span><span class="p">,</span><span class="m">24</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "Ken (24 years old)"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is {1} but has a height of {2:.2f}cm"</span><span class="p">,</span><span class="m">18</span><span class="p">,</span><span class="m">190</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "He is 18 but has a height of 190.00cm"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"{1}, {2:.1f}, {3:+.2f}, {2}, {1:.0f}"</span><span class="p">,</span><span class="m">1.56</span><span class="p">,</span><span class="m">2.34</span><span class="p">,</span><span class="m">3.78</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "1.56, 2.3, +3.78, 2.34, 2"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"{2},{1}"</span><span class="p">,</span><span class="s">"x"</span><span class="p">,</span><span class="s">"y"</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "y,x"
+</code></pre>
 
 <h3>
 <a name="working-with-named-character-vectors-and-lists" class="anchor" href="#working-with-named-character-vectors-and-lists"><span class="octicon octicon-link"></span></a>Working with named character vectors and lists</h3>
 
-<div class="highlight highlight-rconsole"><pre><span class="gp">&gt; </span>rprintf<span class="p">(</span>c<span class="p">(</span><span class="s">"%s:%d"</span><span class="p">,</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
-<span class="go">[1] "Ken:24" "Ken:24" "Ken:24"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span>c<span class="p">(</span>a<span class="o">=</span><span class="s">"%s:%d"</span><span class="p">,</span>b<span class="o">=</span><span class="s">"$name:$age"</span><span class="p">,</span>c<span class="o">=</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
-<span class="go">       a        b        c </span>
-<span class="go">"Ken:24" "Ken:24" "Ken:24"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span>list<span class="p">(</span><span class="s">"%s:%d"</span><span class="p">,</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
-<span class="go">[[1]]</span>
-<span class="go">[1] "Ken:24"</span>
-
-<span class="go">[[2]]</span>
-<span class="go">[1] "Ken:24"</span>
-
-<span class="go">[[3]]</span>
-<span class="go">[1] "Ken:24"</span>
-
-<span class="gp">&gt; </span>rprintf<span class="p">(</span>list<span class="p">(</span>a<span class="o">=</span><span class="s">"%s:%d"</span><span class="p">,</span>b<span class="o">=</span><span class="s">"$name:$age"</span><span class="p">,</span>c<span class="o">=</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
-<span class="go">$a</span>
-<span class="go">[1] "Ken:24"</span>
-
-<span class="go">$b</span>
-<span class="go">[1] "Ken:24"</span>
-
-<span class="go">$c</span>
-<span class="go">[1] "Ken:24"</span>
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="s">"%s:%d"</span><span class="p">,</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
 </pre></div>
 
+<pre><code>[1] "Ken:24" "Ken:24" "Ken:24"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="kt">c</span><span class="p">(</span>a<span class="o">=</span><span class="s">"%s:%d"</span><span class="p">,</span>b<span class="o">=</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "Ken:24" "Ken:24" "Ken:24"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="kt">list</span><span class="p">(</span><span class="s">"%s:%d"</span><span class="p">,</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[[1]]
+[1] "Ken:24"
+
+[[2]]
+[1] "Ken:24"
+
+[[3]]
+[1] "Ken:24"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="kt">list</span><span class="p">(</span>a<span class="o">=</span><span class="s">"%s:%d"</span><span class="p">,</span>b<span class="o">=</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>$a
+[1] "Ken:24"
+
+$b
+[1] "Ken:24"
+
+$c
+[1] "Ken:24"
+</code></pre>
+
 <p>For each type of formatting, a specialized function is also provided. <code>rprintv</code> only handles named variable-based formatting, and <code>rprintn</code> only handles number-based formatting.</p>
+
+<h3>
+<a name="working-with-list-argument" class="anchor" href="#working-with-list-argument"><span class="octicon octicon-link"></span></a>Working with list argument</h3>
+
+<p>Instead of specifying named arguments, supplying a list containing the named variables works too.</p>
+
+<div class="highlight highlight-r"><pre>args <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+rprintf<span class="p">(</span><span class="s">"Name: %s, Age: %d"</span><span class="p">,</span><span class="kp">args</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "Name: Ken, Age: 24"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Name: $name, Age: $age"</span><span class="p">,</span><span class="kp">args</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "Name: Ken, Age: 24"
+</code></pre>
+
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Name: {1}, Age: {2}"</span><span class="p">,</span><span class="kp">args</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>[1] "Name: Ken, Age: 24"
+</code></pre>
 
 <h2>
 <a name="help-overview" class="anchor" href="#help-overview"><span class="octicon octicon-link"></span></a>Help overview</h2>
 
-<div class="highlight highlight-s"><pre>help<span class="p">(</span>package <span class="o">=</span> rprintf<span class="p">)</span>
+<div class="highlight highlight-r"><pre>help<span class="p">(</span>package <span class="o">=</span> rprintf<span class="p">)</span>
 </pre></div>
 
 <h2>
@@ -154,12 +223,17 @@
 
 <p>This package is under <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
       </section>
-      <footer>
-        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">rprintf maintained by <a href="https://github.com/renkun-ken">renkun-ken</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		          <script type="text/javascript">
+
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -169,6 +243,7 @@
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
