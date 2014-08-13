@@ -5,11 +5,11 @@ Version: 0.1-1
 Author: Kun Ren <renkun@outlook.com>
 Maintainer: Kun Ren <renkun@outlook.com>
 Description: A set of tools for building formatted string under various
-    replacement rules: C-style formatting, named variable-based formatting, and
+    replacement rules: C-style formatting, variable-based formatting, and
     number-based formatting
 Depends:
     R (>= 2.15)
-Date: 2014-08-08
+Date: 2014-08-13
 Imports:
     stringr
 Suggests:

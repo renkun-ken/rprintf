@@ -11,8 +11,8 @@ opts_chunk$set(prompt=FALSE, comment='', results='markup')
 rprintf is an adaptive builder for formatted strings. Currently it provides a set of tools for building formatted strings under various replacement rules: 
 
 - C-style formatting with `sprintf`
-- Named variable-based formatting
 - Number-based formatting
+- Variable-based formatting
 
 The primary goal of this package is to make it easier to produce formatted strings in all popular styles.
 
@@ -38,18 +38,9 @@ The following examples demonstrate how `rprintf` functions works. You should be 
 
 ```{r}
 library(rprintf)
-rprintf("Hello, %s","world")
-rprintf("%s (%d years old)","Ken",24)
-rprintf("He is %d but has a height of %.1fcm",18,190)
-```
-
-### Named variable-based formatting
-
-```{r}
-rprintf("Hello, $name", name="world")
-rprintf("$name ($age years old)",name="Ken",age=24)
-rprintf("He is $age but has a height of $height:.2fcm",age=18,height=190)
-rprintf("$a, $b:.1f, $c:+.2f, $b, $a:.0f",a=1.56,b=2.34,c=3.78)
+rprintf("Hello, %s", "world")
+rprintf("%s (%d years old)", "Ken", 24)
+rprintf("He is %d but has a height of %.1fcm", 18, 190)
 ```
 
 ### Number-based formatting
@@ -62,33 +53,16 @@ rprintf("{1}, {2:.1f}, {3:+.2f}, {2}, {1:.0f}",1.56,2.34,3.78)
 rprintf("{2},{1}","x","y")
 ```
 
-### Working with named character vectors and lists
+### Variable-based formatting
 
 ```{r}
-rprintf(c("%s:%d","$name:$age","{1}:{2}"),name="Ken",age=24)
-rprintf(c(a="%s:%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
-rprintf(list("%s:%d","$name:$age","{1}:{2}"),name="Ken",age=24)
-rprintf(list(a="%s:%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
+rprintf("Hello, $name", name="world")
+rprintf("$name ($age years old)",name="Ken",age=24)
+rprintf("He is $age but has a height of $height:.2fcm",age=18,height=190)
+rprintf("$a, $b:.1f, $c:+.2f, $b, $a:.0f",a=1.56,b=2.34,c=3.78)
 ```
 
 For each type of formatting, a specialized function is also provided. `rprintv` only handles named variable-based formatting, and `rprintn` only handles number-based formatting.
-
-### Working with list argument
-
-Instead of specifying named arguments, supplying a list containing the named variables works too.
-
-```{r}
-args <- list(name="Ken",age=24)
-rprintf("Name: %s, Age: %d",args)
-rprintf("Name: $name, Age: $age",args)
-rprintf("Name: {1}, Age: {2}",args)
-```
-
-## Help overview
-
-```r
-help(package = rprintf)
-```
 
 ## License
 

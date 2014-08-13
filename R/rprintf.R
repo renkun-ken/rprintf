@@ -42,14 +42,11 @@
 #' rprintf("name: {1}, age: {2}",p)
 #' }
 rprintf <- function(x,...) {
-  matches <- do.call(cbind,
-    lapply(patterns,function(pattern) {
-      grepl(pattern,x,perl = TRUE)
-  }))
+  matches <- do.call(cbind,lapply(patterns,
+    function(p) grepl(p,x,perl = TRUE)))
   funs.id <- apply(matches,1L,function(row) which(row)[1L])
   funs <- names(patterns)[funs.id]
-  args <- list(...)
-  result <- Map(rprintf.match,x,funs,list(args))
+  result <- Map(rprintf.match,x,funs,list(list(...)))
   if(is.list(x)) result
-  else unlist(result,use.names = FALSE)
+  else setnames(unlist(result,use.names = FALSE),names(x))
 }
