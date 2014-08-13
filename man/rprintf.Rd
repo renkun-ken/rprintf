@@ -44,10 +44,14 @@ rprintf(c(a="\%s:\%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
 rprintf(list("\%s:\%d","$name:$age","{1}:{2}"),name="Ken",age=24)
 rprintf(list(a="\%s:\%d",b="$name:$age",c="{1}:{2}"),name="Ken",age=24)
 
-# This function works with list argument for named variables.
+# It also works with list argument for named variables.
 p <- list(name="Ken",age=24)
 rprintf("name: $name, age: $age",p)
 rprintf("name: {1}, age: {2}",p)
+
+Note that when the list of arguments are given names,
+the variable names in format string should be modified.
+rprintf("name: $arg.name, age: $arg.age", arg = p)
 }
 }
 
