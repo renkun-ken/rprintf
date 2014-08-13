@@ -21,4 +21,3 @@ URL: http://renkun.me/rprintf,
 BugReports: https://github.com/renkun-ken/rprintf/issues
 Roxygen: list(wrap = FALSE)
 ByteCompile: TRUE
-
