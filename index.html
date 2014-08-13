@@ -41,8 +41,8 @@
 <ul>
 <li>C-style formatting with <code>sprintf</code>
 </li>
-<li>Named variable-based formatting</li>
 <li>Number-based formatting</li>
+<li>Variable-based formatting</li>
 </ul><p>The primary goal of this package is to make it easier to produce formatted strings in all popular styles.</p>
 
 <h2>
@@ -67,49 +67,22 @@
 <a name="c-style-formatting" class="anchor" href="#c-style-formatting"><span class="octicon octicon-link"></span></a>C-style formatting</h3>
 
 <div class="highlight highlight-r"><pre><span class="kn">library</span><span class="p">(</span>rprintf<span class="p">)</span>
-rprintf<span class="p">(</span><span class="s">"Hello, %s"</span><span class="p">,</span><span class="s">"world"</span><span class="p">)</span>
+rprintf<span class="p">(</span><span class="s">"Hello, %s"</span><span class="p">,</span> <span class="s">"world"</span><span class="p">)</span>
 </pre></div>
 
 <pre><code>[1] "Hello, world"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"%s (%d years old)"</span><span class="p">,</span><span class="s">"Ken"</span><span class="p">,</span><span class="m">24</span><span class="p">)</span>
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"%s (%d years old)"</span><span class="p">,</span> <span class="s">"Ken"</span><span class="p">,</span> <span class="m">24</span><span class="p">)</span>
 </pre></div>
 
 <pre><code>[1] "Ken (24 years old)"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is %d but has a height of %.1fcm"</span><span class="p">,</span><span class="m">18</span><span class="p">,</span><span class="m">190</span><span class="p">)</span>
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is %d but has a height of %.1fcm"</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="m">190</span><span class="p">)</span>
 </pre></div>
 
 <pre><code>[1] "He is 18 but has a height of 190.0cm"
-</code></pre>
-
-<h3>
-<a name="named-variable-based-formatting" class="anchor" href="#named-variable-based-formatting"><span class="octicon octicon-link"></span></a>Named variable-based formatting</h3>
-
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Hello, $name"</span><span class="p">,</span> name<span class="o">=</span><span class="s">"world"</span><span class="p">)</span>
-</pre></div>
-
-<pre><code>[1] "Hello, world"
-</code></pre>
-
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"$name ($age years old)"</span><span class="p">,</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
-</pre></div>
-
-<pre><code>[1] "Ken (24 years old)"
-</code></pre>
-
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is $age but has a height of $height:.2fcm"</span><span class="p">,</span>age<span class="o">=</span><span class="m">18</span><span class="p">,</span>height<span class="o">=</span><span class="m">190</span><span class="p">)</span>
-</pre></div>
-
-<pre><code>[1] "He is 18 but has a height of 190.00cm"
-</code></pre>
-
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"$a, $b:.1f, $c:+.2f, $b, $a:.0f"</span><span class="p">,</span>a<span class="o">=</span><span class="m">1.56</span><span class="p">,</span>b<span class="o">=</span><span class="m">2.34</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="m">3.78</span><span class="p">)</span>
-</pre></div>
-
-<pre><code>[1] "1.56, 2.3, +3.78, 2.34, 2"
 </code></pre>
 
 <h3>
@@ -146,77 +119,33 @@ rprintf<span class="p">(</span><span class="s">"Hello, %s"</span><span class="p"
 </code></pre>
 
 <h3>
-<a name="working-with-named-character-vectors-and-lists" class="anchor" href="#working-with-named-character-vectors-and-lists"><span class="octicon octicon-link"></span></a>Working with named character vectors and lists</h3>
+<a name="variable-based-formatting" class="anchor" href="#variable-based-formatting"><span class="octicon octicon-link"></span></a>Variable-based formatting</h3>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="s">"%s:%d"</span><span class="p">,</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Hello, $name"</span><span class="p">,</span> name<span class="o">=</span><span class="s">"world"</span><span class="p">)</span>
 </pre></div>
 
-<pre><code>[1] "Ken:24" "Ken:24" "Ken:24"
+<pre><code>[1] "Hello, world"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="kt">c</span><span class="p">(</span>a<span class="o">=</span><span class="s">"%s:%d"</span><span class="p">,</span>b<span class="o">=</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"$name ($age years old)"</span><span class="p">,</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
 </pre></div>
 
-<pre><code>[1] "Ken:24" "Ken:24" "Ken:24"
+<pre><code>[1] "Ken (24 years old)"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="kt">list</span><span class="p">(</span><span class="s">"%s:%d"</span><span class="p">,</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is $age but has a height of $height:.2fcm"</span><span class="p">,</span>age<span class="o">=</span><span class="m">18</span><span class="p">,</span>height<span class="o">=</span><span class="m">190</span><span class="p">)</span>
 </pre></div>
 
-<pre><code>[[1]]
-[1] "Ken:24"
-
-[[2]]
-[1] "Ken:24"
-
-[[3]]
-[1] "Ken:24"
+<pre><code>[1] "He is 18 but has a height of 190.00cm"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="kt">list</span><span class="p">(</span>a<span class="o">=</span><span class="s">"%s:%d"</span><span class="p">,</span>b<span class="o">=</span><span class="s">"$name:$age"</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="s">"{1}:{2}"</span><span class="p">),</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"$a, $b:.1f, $c:+.2f, $b, $a:.0f"</span><span class="p">,</span>a<span class="o">=</span><span class="m">1.56</span><span class="p">,</span>b<span class="o">=</span><span class="m">2.34</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="m">3.78</span><span class="p">)</span>
 </pre></div>
 
-<pre><code>$a
-[1] "Ken:24"
-
-$b
-[1] "Ken:24"
-
-$c
-[1] "Ken:24"
+<pre><code>[1] "1.56, 2.3, +3.78, 2.34, 2"
 </code></pre>
 
 <p>For each type of formatting, a specialized function is also provided. <code>rprintv</code> only handles named variable-based formatting, and <code>rprintn</code> only handles number-based formatting.</p>
-
-<h3>
-<a name="working-with-list-argument" class="anchor" href="#working-with-list-argument"><span class="octicon octicon-link"></span></a>Working with list argument</h3>
-
-<p>Instead of specifying named arguments, supplying a list containing the named variables works too.</p>
-
-<div class="highlight highlight-r"><pre>args <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
-rprintf<span class="p">(</span><span class="s">"Name: %s, Age: %d"</span><span class="p">,</span><span class="kp">args</span><span class="p">)</span>
-</pre></div>
-
-<pre><code>[1] "Name: Ken, Age: 24"
-</code></pre>
-
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Name: $name, Age: $age"</span><span class="p">,</span><span class="kp">args</span><span class="p">)</span>
-</pre></div>
-
-<pre><code>[1] "Name: Ken, Age: 24"
-</code></pre>
-
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Name: {1}, Age: {2}"</span><span class="p">,</span><span class="kp">args</span><span class="p">)</span>
-</pre></div>
-
-<pre><code>[1] "Name: Ken, Age: 24"
-</code></pre>
-
-<h2>
-<a name="help-overview" class="anchor" href="#help-overview"><span class="octicon octicon-link"></span></a>Help overview</h2>
-
-<div class="highlight highlight-r"><pre>help<span class="p">(</span>package <span class="o">=</span> rprintf<span class="p">)</span>
-</pre></div>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
