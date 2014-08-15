@@ -1,7 +1,7 @@
 Package: rprintf
 Type: Package
 Title: Adaptive builder for formatted strings
-Version: 0.1-1
+Version: 0.1-2
 Author: Kun Ren <ken@renkun.me>
 Maintainer: Kun Ren <ken@renkun.me>
 Description: A set of tools for building formatted string under various
