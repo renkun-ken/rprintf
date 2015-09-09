@@ -8,7 +8,7 @@ opts_chunk$set(prompt = FALSE, comment = '', results = 'markup')
 
 [![Linux Build Status](https://travis-ci.org/renkun-ken/rprintf.png?branch=master)](https://travis-ci.org/renkun-ken/rprintf) 
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/renkun-ken/rprintf?svg=true)](https://ci.appveyor.com/project/renkun-ken/rprintf)
-[![Coverage Status](https://coveralls.io/repos/renkun-ken/rprintf/badge.svg)](https://coveralls.io/r/renkun-ken/rprintf) 
+[![codecov.io](http://codecov.io/github/renkun-ken/rprintf/coverage.svg?branch=master)](http://codecov.io/github/renkun-ken/rprintf?branch=master)
 [![CRAN Version](http://www.r-pkg.org/badges/version/rprintf)](http://cran.rstudio.com/web/packages/rprintf)
 
 
