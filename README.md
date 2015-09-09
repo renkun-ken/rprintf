@@ -2,7 +2,11 @@
 
 # rprintf
 
-[![Build Status](https://travis-ci.org/renkun-ken/rprintf.png?branch=master)](https://travis-ci.org/renkun-ken/rprintf)
+[![Linux Build Status](https://travis-ci.org/renkun-ken/rprintf.png?branch=master)](https://travis-ci.org/renkun-ken/rprintf) 
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/renkun-ken/rprintf?svg=true)](https://ci.appveyor.com/project/renkun-ken/rprintf)
+[![Coverage Status](https://coveralls.io/repos/renkun-ken/rprintf/badge.svg)](https://coveralls.io/r/renkun-ken/rprintf) 
+[![CRAN Version](http://www.r-pkg.org/badges/version/rprintf)](http://cran.rstudio.com/web/packages/rprintf)
+
 
 rprintf is an adaptive builder for formatted strings. Currently it provides a set of tools for building formatted strings under various replacement rules: 
 

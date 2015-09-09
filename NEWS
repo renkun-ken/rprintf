@@ -1,3 +1,7 @@
+v0.2
+===
+Import stringi package instead of stringr
+
 v0.1-2 (2014-08-15)
 ===
 Maintenance update
