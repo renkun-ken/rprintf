@@ -1,40 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="rprintf : Adaptive builder for formatted strings">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>rprintf</title>
+    <meta charset="UTF-8">
+    <title>rprintf by renkun-ken</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">rprintf</h1>
+      <h2 class="project-tagline">Adaptive builder for formatted strings</h2>
+      <a href="https://github.com/renkun-ken/rprintf" class="btn">View on GitHub</a>
+      <a href="https://github.com/renkun-ken/rprintf/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/renkun-ken/rprintf/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/renkun-ken/rprintf">View on GitHub</a>
+    <section class="main-content">
+      <h1>
+<a id="rprintf" class="anchor" href="#rprintf" aria-hidden="true"><span class="octicon octicon-link"></span></a>rprintf</h1>
 
-          <h1 id="project_title">rprintf</h1>
-          <h2 id="project_tagline">Adaptive builder for formatted strings</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/renkun-ken/rprintf/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/renkun-ken/rprintf/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="rprintf" class="anchor" href="#rprintf"><span class="octicon octicon-link"></span></a>rprintf</h1>
-
-<p><a href="https://travis-ci.org/renkun-ken/rprintf"><img src="https://travis-ci.org/renkun-ken/rprintf.png?branch=master" alt="Build Status"></a></p>
+<p><a href="https://travis-ci.org/renkun-ken/rprintf"><img src="https://travis-ci.org/renkun-ken/rprintf.png?branch=master" alt="Linux Build Status"></a> 
+<a href="https://ci.appveyor.com/project/renkun-ken/rprintf"><img src="https://ci.appveyor.com/api/projects/status/github/renkun-ken/rprintf?svg=true" alt="Windows Build status"></a>
+<a href="https://coveralls.io/r/renkun-ken/rprintf"><img src="https://coveralls.io/repos/renkun-ken/rprintf/badge.svg" alt="Coverage Status"></a> 
+<a href="http://cran.rstudio.com/web/packages/rprintf"><img src="http://www.r-pkg.org/badges/version/rprintf" alt="CRAN Version"></a></p>
 
 <p>rprintf is an adaptive builder for formatted strings. Currently it provides a set of tools for building formatted strings under various replacement rules: </p>
 
@@ -43,104 +34,92 @@
 </li>
 <li>Number-based formatting</li>
 <li>Variable-based formatting</li>
-</ul><p>The primary goal of this package is to make it easier to produce formatted strings in all popular styles.</p>
+</ul>
+
+<p>The primary goal of this package is to make it easier to produce formatted strings in all popular styles.</p>
 
 <h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>You can install from CRAN with</p>
 
-<div class="highlight highlight-r"><pre>install.packages<span class="p">(</span><span class="s">"rprintf"</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>rprintf<span class="pl-pds">"</span></span>)</pre></div>
 
 <p>or you can install the latest development version from GitHub with</p>
 
-<div class="highlight highlight-r"><pre>devtools<span class="o">::</span>install_github<span class="p">(</span><span class="s">"rprintf"</span><span class="p">,</span><span class="s">"renkun-ken"</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre><span class="pl-e">devtools</span><span class="pl-k">::</span>install_github(<span class="pl-s"><span class="pl-pds">"</span>rprintf<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>renkun-ken<span class="pl-pds">"</span></span>)</pre></div>
 
 <h2>
-<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
 
 <p>The following examples demonstrate how <code>rprintf</code> functions works. You should be familiar with how <code>sprintf</code> works first. See the <a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/sprintf.html">documentation</a> for more details.</p>
 
 <h3>
-<a name="c-style-formatting" class="anchor" href="#c-style-formatting"><span class="octicon octicon-link"></span></a>C-style formatting</h3>
+<a id="c-style-formatting" class="anchor" href="#c-style-formatting" aria-hidden="true"><span class="octicon octicon-link"></span></a>C-style formatting</h3>
 
-<div class="highlight highlight-r"><pre><span class="kn">library</span><span class="p">(</span>rprintf<span class="p">)</span>
-rprintf<span class="p">(</span><span class="s">"Hello, %s"</span><span class="p">,</span> <span class="s">"world"</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>library(<span class="pl-smi">rprintf</span>)
+rprintf(<span class="pl-s"><span class="pl-pds">"</span>Hello, %s<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>world<span class="pl-pds">"</span></span>)</pre></div>
 
 <pre><code>[1] "Hello, world"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"%s (%d years old)"</span><span class="p">,</span> <span class="s">"Ken"</span><span class="p">,</span> <span class="m">24</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>%s (%d years old)<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Ken<span class="pl-pds">"</span></span>, <span class="pl-c1">24</span>)</pre></div>
 
 <pre><code>[1] "Ken (24 years old)"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is %d but has a height of %.1fcm"</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="m">190</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>He is %d but has a height of %.1fcm<span class="pl-pds">"</span></span>, <span class="pl-c1">18</span>, <span class="pl-c1">190</span>)</pre></div>
 
 <pre><code>[1] "He is 18 but has a height of 190.0cm"
 </code></pre>
 
 <h3>
-<a name="number-based-formatting" class="anchor" href="#number-based-formatting"><span class="octicon octicon-link"></span></a>Number-based formatting</h3>
+<a id="number-based-formatting" class="anchor" href="#number-based-formatting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Number-based formatting</h3>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Hello, {1}"</span><span class="p">,</span> <span class="s">"world"</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>Hello, {1}<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>world<span class="pl-pds">"</span></span>)</pre></div>
 
 <pre><code>[1] "Hello, world"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"{1} ({2} years old)"</span><span class="p">,</span><span class="s">"Ken"</span><span class="p">,</span><span class="m">24</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>{1} ({2} years old)<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Ken<span class="pl-pds">"</span></span>,<span class="pl-c1">24</span>)</pre></div>
 
 <pre><code>[1] "Ken (24 years old)"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is {1} but has a height of {2:.2f}cm"</span><span class="p">,</span><span class="m">18</span><span class="p">,</span><span class="m">190</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>He is {1} but has a height of {2:.2f}cm<span class="pl-pds">"</span></span>,<span class="pl-c1">18</span>,<span class="pl-c1">190</span>)</pre></div>
 
 <pre><code>[1] "He is 18 but has a height of 190.00cm"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"{1}, {2:.1f}, {3:+.2f}, {2}, {1:.0f}"</span><span class="p">,</span><span class="m">1.56</span><span class="p">,</span><span class="m">2.34</span><span class="p">,</span><span class="m">3.78</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>{1}, {2:.1f}, {3:+.2f}, {2}, {1:.0f}<span class="pl-pds">"</span></span>,<span class="pl-c1">1.56</span>,<span class="pl-c1">2.34</span>,<span class="pl-c1">3.78</span>)</pre></div>
 
 <pre><code>[1] "1.56, 2.3, +3.78, 2.34, 2"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"{2},{1}"</span><span class="p">,</span><span class="s">"x"</span><span class="p">,</span><span class="s">"y"</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>{2},{1}<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>x<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>y<span class="pl-pds">"</span></span>)</pre></div>
 
 <pre><code>[1] "y,x"
 </code></pre>
 
 <h3>
-<a name="variable-based-formatting" class="anchor" href="#variable-based-formatting"><span class="octicon octicon-link"></span></a>Variable-based formatting</h3>
+<a id="variable-based-formatting" class="anchor" href="#variable-based-formatting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Variable-based formatting</h3>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"Hello, $name"</span><span class="p">,</span> name<span class="o">=</span><span class="s">"world"</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>Hello, $name<span class="pl-pds">"</span></span>, <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>world<span class="pl-pds">"</span></span>)</pre></div>
 
 <pre><code>[1] "Hello, world"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"$name ($age years old)"</span><span class="p">,</span>name<span class="o">=</span><span class="s">"Ken"</span><span class="p">,</span>age<span class="o">=</span><span class="m">24</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>$name ($age years old)<span class="pl-pds">"</span></span>,<span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>Ken<span class="pl-pds">"</span></span>,<span class="pl-v">age</span><span class="pl-k">=</span><span class="pl-c1">24</span>)</pre></div>
 
 <pre><code>[1] "Ken (24 years old)"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"He is $age but has a height of $height:.2fcm"</span><span class="p">,</span>age<span class="o">=</span><span class="m">18</span><span class="p">,</span>height<span class="o">=</span><span class="m">190</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>He is $age but has a height of $height:.2fcm<span class="pl-pds">"</span></span>,<span class="pl-v">age</span><span class="pl-k">=</span><span class="pl-c1">18</span>,<span class="pl-v">height</span><span class="pl-k">=</span><span class="pl-c1">190</span>)</pre></div>
 
 <pre><code>[1] "He is 18 but has a height of 190.00cm"
 </code></pre>
 
-<div class="highlight highlight-r"><pre>rprintf<span class="p">(</span><span class="s">"$a, $b:.1f, $c:+.2f, $b, $a:.0f"</span><span class="p">,</span>a<span class="o">=</span><span class="m">1.56</span><span class="p">,</span>b<span class="o">=</span><span class="m">2.34</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="m">3.78</span><span class="p">)</span>
-</pre></div>
+<div class="highlight highlight-r"><pre>rprintf(<span class="pl-s"><span class="pl-pds">"</span>$a, $b:.1f, $c:+.2f, $b, $a:.0f<span class="pl-pds">"</span></span>,<span class="pl-v">a</span><span class="pl-k">=</span><span class="pl-c1">1.56</span>,<span class="pl-v">b</span><span class="pl-k">=</span><span class="pl-c1">2.34</span>,<span class="pl-v">c</span><span class="pl-k">=</span><span class="pl-c1">3.78</span>)</pre></div>
 
 <pre><code>[1] "1.56, 2.3, +3.78, 2.34, 2"
 </code></pre>
@@ -148,21 +127,19 @@ rprintf<span class="p">(</span><span class="s">"Hello, %s"</span><span class="p"
 <p>For each type of formatting, a specialized function is also provided. <code>rprintv</code> only handles named variable-based formatting, and <code>rprintn</code> only handles number-based formatting.</p>
 
 <h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>This package is under <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">rprintf maintained by <a href="https://github.com/renkun-ken">renkun-ken</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/renkun-ken/rprintf">rprintf</a> is maintained by <a href="https://github.com/renkun-ken">renkun-ken</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-              <script type="text/javascript">
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -172,7 +149,6 @@ rprintf<span class="p">(</span><span class="s">"Hello, %s"</span><span class="p"
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
 
   </body>
 </html>
