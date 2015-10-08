@@ -6,7 +6,7 @@
 #' numbers replaced by a given set of values in correct
 #' formats.
 #'
-#' @param x The character vector or list to be transformed
+#' @param .format The character vector or list to be transformed
 #' @param ... The arguments that specify the set of values to be
 #'   placed
 #' @importFrom stringi stri_extract_all_regex
@@ -23,11 +23,11 @@
 #' rprintf('{2},{1}','x','y')
 #' }
 #'
-rprintn <- function(x, ...) {
+rprintn <- function(.format, ...) {
   args <- makelist(...)
-  x <- gsub("%", "%%", x, fixed = TRUE)
+  x <- gsub("%", "%%", .format, fixed = TRUE)
   xs <- unlist(stringi::stri_extract_all_regex(x, "(?<!\\{)\\{\\d+(:[\\s\\+\\-\\#\\.\\d]*\\w)?\\}(?!\\})"))
-  
+
   if (length(xs) == 1L && is.na(xs)) {
     pass3 <- x
   } else {
@@ -36,6 +36,6 @@ rprintn <- function(x, ...) {
     pass2 <- stringi::stri_replace_all_regex(pass1, "(?<!\\{)\\{(\\d+)\\}(?!\\})", "%s")
     pass3 <- do.call(sprintf, c(list(pass2), args[xss]))
   }
-  
+
   stringi::stri_replace_all_regex(pass3, "\\{\\{(.+)\\}\\}", "{$1}")
-} 
+}

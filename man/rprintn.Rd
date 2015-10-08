@@ -5,10 +5,10 @@
 \title{Build a character vector or list with number-based
 string formatting}
 \usage{
-rprintn(x, ...)
+rprintn(.format, ...)
 }
 \arguments{
-\item{x}{The character vector or list to be transformed}
+\item{.format}{The character vector or list to be transformed}
 
 \item{...}{The arguments that specify the set of values to be
 placed}

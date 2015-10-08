@@ -6,7 +6,7 @@
 #' as placeholders replaced by a given set of values in correct
 #' formats.
 #'
-#' @param x The character vector or list to be transformed
+#' @param .format The character vector or list to be transformed
 #' @param ... The arguments that specify the set of values to be
 #'   placed
 #' @export
@@ -45,11 +45,12 @@
 #' the variable names in format string should be modified.
 #' rprintf('name: $arg.name, age: $arg.age', arg = p)
 #' }
-rprintf <- function(x, ...) {
-  matches <- do.call(cbind, lapply(patterns, function(p) grepl(p, x, perl = TRUE)))
+rprintf <- function(.format, ...) {
+  matches <- do.call(cbind, lapply(patterns, function(p) grepl(p, .format, perl = TRUE)))
   funs.id <- apply(matches, 1L, function(row) which(row)[1L])
   funs <- names(patterns)[funs.id]
-  result <- Map(rprintf.match, x, funs, list(list(...)))
-  if (is.list(x)) 
-    result else setnames(unlist(result, use.names = FALSE), names(x))
-} 
+  result <- Map(rprintf.match, .format, funs, list(list(...)))
+  if (is.list(.format))
+    result else
+  setnames(unlist(result, use.names = FALSE), names(.format))
+}

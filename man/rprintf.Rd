@@ -4,10 +4,10 @@
 \alias{rprintf}
 \title{Build a character vector or list with adaptive string formatting}
 \usage{
-rprintf(x, ...)
+rprintf(.format, ...)
 }
 \arguments{
-\item{x}{The character vector or list to be transformed}
+\item{.format}{The character vector or list to be transformed}
 
 \item{...}{The arguments that specify the set of values to be
 placed}
