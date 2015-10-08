@@ -9,6 +9,8 @@
 #' @param .format The character vector or list to be transformed
 #' @param ... The arguments that specify the set of values to be
 #'   placed
+#' @param .envir The arugment does not work with number-based
+#' formatting.
 #' @importFrom stringi stri_extract_all_regex
 #' @importFrom stringi stri_replace_all_regex
 #' @export
@@ -23,7 +25,7 @@
 #' rprintf('{2},{1}','x','y')
 #' }
 #'
-rprintn <- function(.format, ...) {
+rprintn <- function(.format, ..., .envir = parent.frame()) {
   args <- makelist(...)
   x <- gsub("%", "%%", .format, fixed = TRUE)
   xs <- unlist(stringi::stri_extract_all_regex(x, "(?<!\\{)\\{\\d+(:[\\s\\+\\-\\#\\.\\d]*\\w)?\\}(?!\\})"))

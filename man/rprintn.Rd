@@ -5,13 +5,16 @@
 \title{Build a character vector or list with number-based
 string formatting}
 \usage{
-rprintn(.format, ...)
+rprintn(.format, ..., .envir = parent.frame())
 }
 \arguments{
 \item{.format}{The character vector or list to be transformed}
 
 \item{...}{The arguments that specify the set of values to be
 placed}
+
+\item{.envir}{The arugment does not work with number-based
+formatting.}
 }
 \description{
 The \code{rprintn} function applies number-based formatter to

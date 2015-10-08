@@ -5,13 +5,18 @@
 \title{Build a character vector or list with variable-based
 string formatting}
 \usage{
-rprintv(.format, ...)
+rprintv(.format, ..., .envir = parent.frame())
 }
 \arguments{
 \item{.format}{The character vector or list to be transformed}
 
 \item{...}{The arguments that specify the set of values to be
 placed}
+
+\item{.envir}{The environment in which variables are searched
+if not explictly specified. Use \code{emptyenv()} to disable
+this behavior. This feature only works for variable-name
+formatting.}
 }
 \description{
 The \code{rprintv} function applies variable-based formatter to

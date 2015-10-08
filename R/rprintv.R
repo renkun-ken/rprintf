@@ -9,6 +9,10 @@
 #' @param .format The character vector or list to be transformed
 #' @param ... The arguments that specify the set of values to be
 #'   placed
+#' @param .envir The environment in which variables are searched
+#' if not explictly specified. Use \code{emptyenv()} to disable
+#' this behavior. This feature only works for variable-name
+#' formatting.
 #' @importFrom stringi stri_extract_all_regex
 #' @importFrom stringi stri_replace_all_regex
 #' @export
@@ -22,7 +26,7 @@
 #' rprintf('$a, $b:.1f, $c:+.2f, $b, $a:.0f',a=1.56,b=2.34,c=3.78)
 #' }
 #'
-rprintv <- function(.format, ...) {
+rprintv <- function(.format, ..., .envir = parent.frame()) {
   args <- makelist(...)
   x <- gsub("%", "%%", .format, fixed = TRUE)
   xs <- unlist(stringi::stri_extract_all_regex(x, "(?<!\\$)\\$[\\w\\._]+(:[\\s\\+\\-\\#\\.\\d]*\\w)?"))
@@ -33,7 +37,8 @@ rprintv <- function(.format, ...) {
     xss <- stringi::stri_replace_all_regex(xs, "(?<!\\$)\\$([\\w\\._]+)(:[\\s\\+\\-\\#\\.\\d]*\\w)?", "$1")
     pass1 <- stringi::stri_replace_all_regex(x, "(?<!\\$)\\$([\\w\\._]+):(?!\\$)(?!:+)([\\s\\+\\-\\#\\.\\d]*\\w)?", "%$2")
     pass2 <- stringi::stri_replace_all_regex(pass1, "(?<!\\$)\\$([\\w\\._]+)", "%s")
-    pass3 <- do.call(sprintf, c(list(pass2), args[xss]))
+    params <- eval(as.call(c(quote(list), lapply(xss, as.symbol))), args, .envir)
+    pass3 <- do.call(sprintf, c(list(pass2), params))
   }
 
   result <- gsub("\\$\\$", "$", pass3)

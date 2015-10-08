@@ -9,6 +9,10 @@
 #' @param .format The character vector or list to be transformed
 #' @param ... The arguments that specify the set of values to be
 #'   placed
+#' @param .envir The environment in which variables are searched
+#' if not explictly specified. Use \code{emptyenv()} to disable
+#' this behavior. This feature only works for variable-name
+#' formatting.
 #' @export
 #' @examples
 #' \dontrun{
@@ -45,11 +49,12 @@
 #' the variable names in format string should be modified.
 #' rprintf('name: $arg.name, age: $arg.age', arg = p)
 #' }
-rprintf <- function(.format, ...) {
+rprintf <- function(.format, ..., .envir = parent.frame()) {
   matches <- do.call(cbind, lapply(patterns, function(p) grepl(p, .format, perl = TRUE)))
   funs.id <- apply(matches, 1L, function(row) which(row)[1L])
   funs <- names(patterns)[funs.id]
-  result <- Map(rprintf.match, .format, funs, list(list(...)))
+  result <- mapply(rprintf.match, .format, funs, list(list(...)),
+    SIMPLIFY = FALSE, USE.NAMES = TRUE, MoreArgs = list(envir = .envir))
   if (is.list(.format))
     result else
   setnames(unlist(result, use.names = FALSE), names(.format))

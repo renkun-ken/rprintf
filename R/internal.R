@@ -6,8 +6,8 @@ patterns <- c(
   rprintn = "(?<!\\{)\\{\\d+(:[\\s\\+\\-\\#\\.\\d]*\\w)?\\}(?!\\})",
   rsprintf = ".")
 
-rprintf.match <- function(x, fun, args) {
-  do.call(fun, c(x, args))
+rprintf.match <- function(x, fun, args, envir) {
+  do.call(fun, c(x, args), envir = envir)
 }
 
 makelist <- function(...) {
@@ -17,7 +17,7 @@ makelist <- function(...) {
     unlist(args, recursive = FALSE) else args
 }
 
-rsprintf <- function(x, ...) {
+rsprintf <- function(.format, ..., .envir = parent.frame()) {
   args <- makelist(...)
-  do.call(sprintf, c(x, args))
+  do.call(sprintf, c(.format, args), envir = .envir)
 }

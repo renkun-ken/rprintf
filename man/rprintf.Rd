@@ -4,13 +4,18 @@
 \alias{rprintf}
 \title{Build a character vector or list with adaptive string formatting}
 \usage{
-rprintf(.format, ...)
+rprintf(.format, ..., .envir = parent.frame())
 }
 \arguments{
 \item{.format}{The character vector or list to be transformed}
 
 \item{...}{The arguments that specify the set of values to be
 placed}
+
+\item{.envir}{The environment in which variables are searched
+if not explictly specified. Use \code{emptyenv()} to disable
+this behavior. This feature only works for variable-name
+formatting.}
 }
 \description{
 The \code{rprintf} function checks the given character vector or
