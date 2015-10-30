@@ -4,13 +4,13 @@ Title: Adaptive Builder for Formatted Strings
 Version: 0.2.3
 Author: Kun Ren <ken@renkun.me>
 Maintainer: Kun Ren <ken@renkun.me>
-Description: Provides a set of functions to facilitate building formatted strings
-    under various replacement rules: C-style formatting, variable-based formatting,
-    and number-based formatting. C-style formatting is basically identical to built-in
-    function 'sprintf'. Variable-based formatting allows users to put variable names
-    in a formatted string which will be replaced by variable values. Number-based
-    formatting allows users to use index numbers to represent the corresponding
-    argument value to appear in the string.
+Description: Provides a set of functions to facilitate building formatted
+    strings under various replacement rules: C-style formatting, variable-based
+    formatting, and number-based formatting. C-style formatting is basically
+    identical to built-in function 'sprintf'. Variable-based formatting allows users
+    to put variable names in a formatted string which will be replaced by variable
+    values. Number-based formatting allows users to use index numbers to represent
+    the corresponding argument value to appear in the string.
 Depends:
     R (>= 2.15)
 Date: 2015-10-08
@@ -25,3 +25,4 @@ URL: http://renkun.me/rprintf,
 BugReports: https://github.com/renkun-ken/rprintf/issues
 Roxygen: list(wrap = FALSE)
 ByteCompile: TRUE
+RoxygenNote: 5.0.0
